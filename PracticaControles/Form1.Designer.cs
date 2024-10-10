@@ -30,14 +30,12 @@
         {
             tbCntrl = new TabControl();
             tbPgDatos = new TabPage();
-            lblEdad = new Label();
+            tbPgPreferencias = new TabPage();
+            tbPgVisualizacion = new TabPage();
             numudEdad = new NumericUpDown();
             lblFecha = new Label();
             mthcldFecha = new MonthCalendar();
             pnlGeneros = new Panel();
-            rbOtro = new RadioButton();
-            rbFemenino = new RadioButton();
-            rbMasculino = new RadioButton();
             lblGenero = new Label();
             txbEmail = new TextBox();
             lblEmail = new Label();
@@ -45,8 +43,10 @@
             lblDireccion = new Label();
             txbNombre = new TextBox();
             lblNombre = new Label();
-            tbPgPreferencias = new TabPage();
-            tbPgVisualizacion = new TabPage();
+            rbMasculino = new RadioButton();
+            rbFemenino = new RadioButton();
+            rbOtro = new RadioButton();
+            lblEdad = new Label();
             tbCntrl.SuspendLayout();
             tbPgDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numudEdad).BeginInit();
@@ -85,14 +85,25 @@
             tbPgDatos.Text = "Datos Personales";
             tbPgDatos.UseVisualStyleBackColor = true;
             // 
-            // lblEdad
+            // tbPgPreferencias
             // 
-            lblEdad.Location = new Point(508, 327);
-            lblEdad.Name = "lblEdad";
-            lblEdad.Size = new Size(142, 25);
-            lblEdad.TabIndex = 20;
-            lblEdad.Text = "Selecciona tu Edad";
-            lblEdad.Click += lblEdad_Click;
+            tbPgPreferencias.Location = new Point(4, 29);
+            tbPgPreferencias.Name = "tbPgPreferencias";
+            tbPgPreferencias.Padding = new Padding(3);
+            tbPgPreferencias.Size = new Size(777, 453);
+            tbPgPreferencias.TabIndex = 1;
+            tbPgPreferencias.Text = "Preferencias";
+            tbPgPreferencias.UseVisualStyleBackColor = true;
+            // 
+            // tbPgVisualizacion
+            // 
+            tbPgVisualizacion.Location = new Point(4, 29);
+            tbPgVisualizacion.Name = "tbPgVisualizacion";
+            tbPgVisualizacion.Padding = new Padding(3);
+            tbPgVisualizacion.Size = new Size(777, 453);
+            tbPgVisualizacion.TabIndex = 2;
+            tbPgVisualizacion.Text = "Visualización";
+            tbPgVisualizacion.UseVisualStyleBackColor = true;
             // 
             // numudEdad
             // 
@@ -101,6 +112,7 @@
             numudEdad.Size = new Size(96, 27);
             numudEdad.TabIndex = 19;
             numudEdad.TextAlign = HorizontalAlignment.Center;
+            numudEdad.Value = new decimal(new int[] { 33, 0, 0, 0 });
             // 
             // lblFecha
             // 
@@ -127,39 +139,6 @@
             pnlGeneros.Size = new Size(294, 105);
             pnlGeneros.TabIndex = 16;
             // 
-            // rbOtro
-            // 
-            rbOtro.AutoSize = true;
-            rbOtro.Location = new Point(216, 47);
-            rbOtro.Name = "rbOtro";
-            rbOtro.Size = new Size(60, 24);
-            rbOtro.TabIndex = 5;
-            rbOtro.TabStop = true;
-            rbOtro.Text = "Otro";
-            rbOtro.UseVisualStyleBackColor = true;
-            // 
-            // rbFemenino
-            // 
-            rbFemenino.AutoSize = true;
-            rbFemenino.Location = new Point(115, 47);
-            rbFemenino.Name = "rbFemenino";
-            rbFemenino.Size = new Size(95, 24);
-            rbFemenino.TabIndex = 4;
-            rbFemenino.TabStop = true;
-            rbFemenino.Text = "Femenino";
-            rbFemenino.UseVisualStyleBackColor = true;
-            // 
-            // rbMasculino
-            // 
-            rbMasculino.AutoSize = true;
-            rbMasculino.Location = new Point(12, 47);
-            rbMasculino.Name = "rbMasculino";
-            rbMasculino.Size = new Size(97, 24);
-            rbMasculino.TabIndex = 3;
-            rbMasculino.TabStop = true;
-            rbMasculino.Text = "Masculino";
-            rbMasculino.UseVisualStyleBackColor = true;
-            // 
             // lblGenero
             // 
             lblGenero.Location = new Point(0, 9);
@@ -167,7 +146,6 @@
             lblGenero.Size = new Size(62, 25);
             lblGenero.TabIndex = 2;
             lblGenero.Text = "Género:";
-            lblGenero.Click += lblGenero_Click;
             // 
             // txbEmail
             // 
@@ -175,7 +153,6 @@
             txbEmail.Name = "txbEmail";
             txbEmail.Size = new Size(152, 27);
             txbEmail.TabIndex = 15;
-            txbEmail.TextChanged += txbEmail_TextChanged;
             // 
             // lblEmail
             // 
@@ -191,7 +168,6 @@
             txbDireccion.Name = "txbDireccion";
             txbDireccion.Size = new Size(152, 27);
             txbDireccion.TabIndex = 13;
-            txbDireccion.TextChanged += txbDireccion_TextChanged;
             // 
             // lblDireccion
             // 
@@ -207,7 +183,6 @@
             txbNombre.Name = "txbNombre";
             txbNombre.Size = new Size(152, 27);
             txbNombre.TabIndex = 11;
-            txbNombre.TextChanged += txbNombre_TextChanged;
             // 
             // lblNombre
             // 
@@ -217,25 +192,47 @@
             lblNombre.TabIndex = 10;
             lblNombre.Text = "Nombre:";
             // 
-            // tbPgPreferencias
+            // rbMasculino
             // 
-            tbPgPreferencias.Location = new Point(4, 29);
-            tbPgPreferencias.Name = "tbPgPreferencias";
-            tbPgPreferencias.Padding = new Padding(3);
-            tbPgPreferencias.Size = new Size(777, 453);
-            tbPgPreferencias.TabIndex = 1;
-            tbPgPreferencias.Text = "Preferencias";
-            tbPgPreferencias.UseVisualStyleBackColor = true;
+            rbMasculino.AutoSize = true;
+            rbMasculino.Location = new Point(12, 47);
+            rbMasculino.Name = "rbMasculino";
+            rbMasculino.Size = new Size(97, 24);
+            rbMasculino.TabIndex = 3;
+            rbMasculino.TabStop = true;
+            rbMasculino.Text = "Masculino";
+            rbMasculino.UseVisualStyleBackColor = true;
             // 
-            // tbPgVisualizacion
+            // rbFemenino
             // 
-            tbPgVisualizacion.Location = new Point(4, 29);
-            tbPgVisualizacion.Name = "tbPgVisualizacion";
-            tbPgVisualizacion.Padding = new Padding(3);
-            tbPgVisualizacion.Size = new Size(777, 453);
-            tbPgVisualizacion.TabIndex = 2;
-            tbPgVisualizacion.Text = "Visualización";
-            tbPgVisualizacion.UseVisualStyleBackColor = true;
+            rbFemenino.AutoSize = true;
+            rbFemenino.Location = new Point(115, 47);
+            rbFemenino.Name = "rbFemenino";
+            rbFemenino.Size = new Size(95, 24);
+            rbFemenino.TabIndex = 4;
+            rbFemenino.TabStop = true;
+            rbFemenino.Text = "Femenino";
+            rbFemenino.UseVisualStyleBackColor = true;
+            // 
+            // rbOtro
+            // 
+            rbOtro.AutoSize = true;
+            rbOtro.Location = new Point(216, 47);
+            rbOtro.Name = "rbOtro";
+            rbOtro.Size = new Size(60, 24);
+            rbOtro.TabIndex = 5;
+            rbOtro.TabStop = true;
+            rbOtro.Text = "Otro";
+            rbOtro.UseVisualStyleBackColor = true;
+            // 
+            // lblEdad
+            // 
+            lblEdad.Location = new Point(508, 327);
+            lblEdad.Name = "lblEdad";
+            lblEdad.Size = new Size(142, 25);
+            lblEdad.TabIndex = 20;
+            lblEdad.Text = "Selecciona tu Edad";
+            lblEdad.Click += lblEdad_Click;
             // 
             // frmInicio
             // 
