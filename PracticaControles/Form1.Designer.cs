@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicio));
             tbCntrl = new TabControl();
             tbPgDatos = new TabPage();
             lblEdad = new Label();
@@ -57,6 +58,11 @@
             chkbNo = new CheckBox();
             chkbSi = new CheckBox();
             tbPgVisualizacion = new TabPage();
+            lblTimer = new Label();
+            pictureBox1 = new PictureBox();
+            btnSalir = new Button();
+            btnLimpiar = new Button();
+            btnGuardar = new Button();
             tbCntrl.SuspendLayout();
             tbPgDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numudEdad).BeginInit();
@@ -64,6 +70,8 @@
             tbPgPreferencias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trkBarSatisfaccion).BeginInit();
             panel1.SuspendLayout();
+            tbPgVisualizacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tbCntrl
@@ -74,11 +82,12 @@
             tbCntrl.Location = new Point(31, 23);
             tbCntrl.Name = "tbCntrl";
             tbCntrl.SelectedIndex = 0;
-            tbCntrl.Size = new Size(785, 486);
+            tbCntrl.Size = new Size(776, 486);
             tbCntrl.TabIndex = 0;
             // 
             // tbPgDatos
             // 
+            tbPgDatos.BackColor = Color.FromArgb(255, 192, 192);
             tbPgDatos.Controls.Add(lblEdad);
             tbPgDatos.Controls.Add(numudEdad);
             tbPgDatos.Controls.Add(lblFecha);
@@ -93,10 +102,9 @@
             tbPgDatos.Location = new Point(4, 29);
             tbPgDatos.Name = "tbPgDatos";
             tbPgDatos.Padding = new Padding(3);
-            tbPgDatos.Size = new Size(777, 453);
+            tbPgDatos.Size = new Size(768, 453);
             tbPgDatos.TabIndex = 0;
             tbPgDatos.Text = "Datos Personales";
-            tbPgDatos.UseVisualStyleBackColor = true;
             // 
             // lblEdad
             // 
@@ -229,6 +237,7 @@
             // 
             // tbPgPreferencias
             // 
+            tbPgPreferencias.BackColor = Color.FromArgb(255, 192, 192);
             tbPgPreferencias.Controls.Add(lblSatisfaccion);
             tbPgPreferencias.Controls.Add(trkBarSatisfaccion);
             tbPgPreferencias.Controls.Add(lblPais);
@@ -240,10 +249,9 @@
             tbPgPreferencias.Location = new Point(4, 29);
             tbPgPreferencias.Name = "tbPgPreferencias";
             tbPgPreferencias.Padding = new Padding(3);
-            tbPgPreferencias.Size = new Size(777, 453);
+            tbPgPreferencias.Size = new Size(768, 453);
             tbPgPreferencias.TabIndex = 1;
             tbPgPreferencias.Text = "Preferencias";
-            tbPgPreferencias.UseVisualStyleBackColor = true;
             tbPgPreferencias.Click += tbPgPreferencias_Click;
             // 
             // lblSatisfaccion
@@ -258,9 +266,11 @@
             // trkBarSatisfaccion
             // 
             trkBarSatisfaccion.Location = new Point(538, 304);
+            trkBarSatisfaccion.Minimum = 1;
             trkBarSatisfaccion.Name = "trkBarSatisfaccion";
             trkBarSatisfaccion.Size = new Size(188, 56);
             trkBarSatisfaccion.TabIndex = 10;
+            trkBarSatisfaccion.Value = 1;
             trkBarSatisfaccion.Scroll += trkBarSatisfaccion_Scroll;
             // 
             // lblPais
@@ -274,6 +284,7 @@
             // 
             // cmBoxPaises
             // 
+            cmBoxPaises.BackColor = Color.FromArgb(255, 255, 128);
             cmBoxPaises.FormattingEnabled = true;
             cmBoxPaises.Items.AddRange(new object[] { "España", "Cuba", "Alemania", "Brasil", "Italia", "Honduras", "Francia", "Argentina", "Beligica" });
             cmBoxPaises.Location = new Point(306, 101);
@@ -293,6 +304,7 @@
             // 
             // cklListHobbies
             // 
+            cklListHobbies.BackColor = Color.FromArgb(255, 255, 128);
             cklListHobbies.CheckOnClick = true;
             cklListHobbies.FormattingEnabled = true;
             cklListHobbies.Items.AddRange(new object[] { "Lectura", "Deportes", "Viajes", "Cine", "Música", "Pintura", "Cocina" });
@@ -343,19 +355,80 @@
             // 
             // tbPgVisualizacion
             // 
+            tbPgVisualizacion.BackColor = Color.FromArgb(255, 192, 192);
+            tbPgVisualizacion.Controls.Add(lblTimer);
+            tbPgVisualizacion.Controls.Add(pictureBox1);
             tbPgVisualizacion.Location = new Point(4, 29);
             tbPgVisualizacion.Name = "tbPgVisualizacion";
             tbPgVisualizacion.Padding = new Padding(3);
-            tbPgVisualizacion.Size = new Size(777, 453);
+            tbPgVisualizacion.Size = new Size(768, 453);
             tbPgVisualizacion.TabIndex = 2;
             tbPgVisualizacion.Text = "Visualización";
-            tbPgVisualizacion.UseVisualStyleBackColor = true;
+            tbPgVisualizacion.Click += tbPgVisualizacion_Click;
+            // 
+            // lblTimer
+            // 
+            lblTimer.Location = new Point(270, 354);
+            lblTimer.Name = "lblTimer";
+            lblTimer.Size = new Size(170, 45);
+            lblTimer.TabIndex = 1;
+            lblTimer.Text = "00:00:00";
+            lblTimer.TextAlign = ContentAlignment.MiddleCenter;
+            lblTimer.Click += lblTimer_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(157, 17);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(444, 281);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = Color.FromArgb(128, 128, 255);
+            btnSalir.Location = new Point(817, 406);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(138, 59);
+            btnSalir.TabIndex = 3;
+            btnSalir.Text = "SALIR";
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.FromArgb(128, 128, 255);
+            btnLimpiar.Location = new Point(817, 243);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(138, 59);
+            btnLimpiar.TabIndex = 4;
+            btnLimpiar.Text = "LIMPIAR";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.FromArgb(128, 128, 255);
+            btnGuardar.Location = new Point(817, 86);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(138, 59);
+            btnGuardar.TabIndex = 5;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // frmInicio
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(967, 540);
+            Controls.Add(btnGuardar);
+            Controls.Add(btnLimpiar);
+            Controls.Add(btnSalir);
             Controls.Add(tbCntrl);
             Name = "frmInicio";
             Text = "Gestión Avanzada de Información Personal";
@@ -371,6 +444,8 @@
             ((System.ComponentModel.ISupportInitialize)trkBarSatisfaccion).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            tbPgVisualizacion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -405,5 +480,10 @@
         private CheckedListBox cklListHobbies;
         private Label lblSatisfaccion;
         private TrackBar trkBarSatisfaccion;
+        private PictureBox pictureBox1;
+        private Label lblTimer;
+        private Button btnSalir;
+        private Button btnLimpiar;
+        private Button btnGuardar;
     }
 }

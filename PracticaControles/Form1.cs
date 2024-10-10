@@ -92,6 +92,7 @@ namespace PracticaControles
         {
 
         }
+        //PAGINA 2 *******
 
         //hobbies
         private void cklListHobbies_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,6 +130,98 @@ namespace PracticaControles
         private void cmBoxPaises_SelectedIndexChanged(object sender, EventArgs e)
         {
             pais = (String)cmBoxPaises.SelectedItem;
+        }
+
+
+        //PAGINA 3 *********
+
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbPgVisualizacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTimer_Click(object sender, EventArgs e)
+        {
+            lblTimer.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            nombre = txbNombre.Text;
+            direccion = txbDireccion.Text;
+            email = txbEmail.Text;
+
+            if (rbMasculino.Checked)
+            {
+                genero = rbMasculino.Text;
+            }
+            else
+            {
+                genero = rbFemenino.Text;
+            }
+
+            edad = (int)numudEdad.Value;
+
+            DateTime fecha = mthcldFecha.SelectionStart;
+            fechaNacimiento = fecha.ToShortDateString();
+
+            listaHobbies.Clear();
+
+            foreach (var item in cklListHobbies.CheckedItems)
+            {
+                listaHobbies.Add((String)item);
+            }
+
+            if (chkbSi.Checked)
+            {
+                suscripcion = chkbSi.Text;
+            }
+            else
+            {
+                suscripcion = chkbNo.Text;
+            }
+
+            satisfaccion = trkBarSatisfaccion.Value;
+
+            pais = (String)cmBoxPaises.SelectedItem;
+
+            if(this.MdiChildren.Length > 0)
+            {
+                frmVistaDatos form = new frmVistaDatos();
+                form.MdiParent = this;
+                form.Dock = DockStyle.Fill;
+                form.Show();
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txbNombre.Text = string.Empty;
+            txbDireccion.Text = string.Empty;
+            txbEmail.Text = string.Empty;
+            rbMasculino.Checked = false;
+            rbFemenino.Checked = false; 
+            DateTime today = DateTime.Now;
+            mthcldFecha.SetDate(today);
+            numudEdad.Value = 0;
+            listaHobbies.Clear();
+            foreach(var item in cklListHobbies.Items)
+            {
+                cklListHobbies.SetItemChecked((int)item, false);
+            }
+            cmBoxPaises.Text = string.Empty;
+            trkBarSatisfaccion.Value = 0;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
